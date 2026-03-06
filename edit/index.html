@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mil — Portfolio Editor</title>
+  <link rel="icon" href="../assets/img/logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="app-shell">
+    <main class="site-preview">
+      <header>
+        <div class="logo" id="logoText"></div>
+        <nav id="mainNav"></nav>
+      </header>
+
+      <section class="hero">
+        <h1 id="heroTitle"></h1>
+        <p id="heroSubtitle"></p>
+        <a id="heroButton" class="primary-btn" href="#about"></a>
+      </section>
+
+      <section id="about" class="section">
+        <h2 id="aboutTitle"></h2>
+        <p id="aboutText"></p>
+      </section>
+
+      <section id="profile-links" class="section">
+        <div class="split-panel">
+          <div class="square-image-wrap">
+            <div id="profileVisual" aria-label="Profile visual"></div>
+          </div>
+          <div class="resource-buttons" id="resourceButtons"></div>
+        </div>
+      </section>
+
+      <section id="art" class="section">
+        <h2 id="galleryTitle"></h2>
+        <div class="gallery" id="galleryContainer"></div>
+      </section>
+
+      <section id="research" class="section">
+        <h2 id="internshipTitle"></h2>
+        <div id="researchContainer"></div>
+      </section>
+
+      <section id="skills" class="section">
+        <h2 id="skillsTitle"></h2>
+        <div class="skills" id="skillsContainer"></div>
+      </section>
+
+      <section id="contact" class="section">
+        <h2 id="contactTitle"></h2>
+        <p id="contactEmail"></p>
+        <p id="contactLinks"></p>
+      </section>
+
+      <div id="detail-modal" class="modal hidden" aria-hidden="true">
+        <div class="modal-overlay" data-close-modal></div>
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+          <button class="modal-close" data-close-modal aria-label="Close pop up">×</button>
+          <img id="modal-image" class="modal-image hidden" alt="Detail image">
+          <h3 id="modal-title"></h3>
+          <p id="modal-text"></p>
+        </div>
+      </div>
+    </main>
+
+    <aside class="editor-panel">
+      <div class="editor-head">
+        <h2>Editor</h2>
+        <p>All editable controls are here.</p>
+      </div>
+
+      <details open>
+        <summary>General</summary>
+        <label>Logo</label>
+        <input id="inputLogo" type="text">
+        <label>Hero Title</label>
+        <input id="inputHeroTitle" type="text">
+        <label>Hero Subtitle</label>
+        <input id="inputHeroSubtitle" type="text">
+        <label>Hero Button Text</label>
+        <input id="inputHeroButtonText" type="text">
+        <label>Hero Button Link</label>
+        <input id="inputHeroButtonHref" type="text">
+        <label>About Title</label>
+        <input id="inputAboutTitle" type="text">
+        <label>About Text</label>
+        <textarea id="inputAboutText" rows="5"></textarea>
+      </details>
+
+      <details>
+        <summary>Navigation Links</summary>
+        <div id="navEditor"></div>
+      </details>
+
+      <details>
+        <summary>Profile + Resource Buttons</summary>
+        <button id="resetProfileSvg" type="button">Reset BPE Flower</button>
+
+        <label>BPE Flower Petal Levels</label>
+        <div class="petal-sliders">
+          <div class="petal-slider-row">
+            <span>Petal 1</span>
+            <input id="petal1Scale" type="range" min="50" max="150" step="25">
+            <span id="petal1Value">4</span>
+          </div>
+          <div class="petal-slider-row">
+            <span>Petal 2</span>
+            <input id="petal2Scale" type="range" min="50" max="150" step="25">
+            <span id="petal2Value">4</span>
+          </div>
+          <div class="petal-slider-row">
+            <span>Petal 3</span>
+            <input id="petal3Scale" type="range" min="50" max="150" step="25">
+            <span id="petal3Value">4</span>
+          </div>
+          <div class="petal-slider-row">
+            <span>Petal 4</span>
+            <input id="petal4Scale" type="range" min="50" max="150" step="25">
+            <span id="petal4Value">4</span>
+          </div>
+          <div class="petal-slider-row">
+            <span>Petal 5</span>
+            <input id="petal5Scale" type="range" min="50" max="150" step="25">
+            <span id="petal5Value">4</span>
+          </div>
+          <div class="petal-slider-row">
+            <span>Petal 6</span>
+            <input id="petal6Scale" type="range" min="50" max="150" step="25">
+            <span id="petal6Value">4</span>
+          </div>
+        </div>
+
+        <div id="resourceEditor"></div>
+      </details>
+
+      <details>
+        <summary>Gallery</summary>
+        <label>Gallery Section Title</label>
+        <input id="inputGallerySectionTitle" type="text">
+        <label>Select Gallery Item</label>
+        <select id="selectGallery"></select>
+        <label>Card Title</label>
+        <input id="inputGalleryTitle" type="text">
+        <label>Card Description</label>
+        <textarea id="inputGalleryDescription" rows="3"></textarea>
+        <label>Card Image URL</label>
+        <input id="inputGalleryImage" type="text">
+        <label>Upload Card Image</label>
+        <input id="uploadGalleryImage" type="file" accept="image/*">
+        <label>Popup Title</label>
+        <input id="inputGalleryPopupTitle" type="text">
+        <label>Popup Text</label>
+        <textarea id="inputGalleryPopupText" rows="4"></textarea>
+        <label>Popup Image URL</label>
+        <input id="inputGalleryPopupImage" type="text">
+        <button id="addGalleryItem" type="button">Add Gallery Item</button>
+        <button id="removeGalleryItem" type="button">Remove Selected Item</button>
+      </details>
+
+      <details>
+        <summary>Internships</summary>
+        <label>Section Title</label>
+        <input id="inputInternshipSectionTitle" type="text">
+        <label>Select Internship</label>
+        <select id="selectInternship"></select>
+        <label>Card Title</label>
+        <input id="inputInternshipTitle" type="text">
+        <label>Card Summary</label>
+        <textarea id="inputInternshipDescription" rows="3"></textarea>
+        <label>Popup Title</label>
+        <input id="inputInternshipPopupTitle" type="text">
+        <label>Popup Text</label>
+        <textarea id="inputInternshipPopupText" rows="4"></textarea>
+        <label>Popup Image URL</label>
+        <input id="inputInternshipPopupImage" type="text">
+        <label>Upload Popup Image</label>
+        <input id="uploadInternshipPopupImage" type="file" accept="image/*">
+        <button id="addInternship" type="button">Add Internship</button>
+        <button id="removeInternship" type="button">Remove Selected Internship</button>
+      </details>
+
+      <details>
+        <summary>Skills</summary>
+        <label>Section Title</label>
+        <input id="inputSkillsSectionTitle" type="text">
+        <label>Select Skill</label>
+        <select id="selectSkill"></select>
+        <label>Skill Text</label>
+        <input id="inputSkillText" type="text">
+        <button id="addSkill" type="button">Add Skill</button>
+        <button id="removeSkill" type="button">Remove Selected Skill</button>
+      </details>
+
+      <details>
+        <summary>Contact + Links</summary>
+        <label>Section Title</label>
+        <input id="inputContactTitle" type="text">
+        <label>Email Text</label>
+        <input id="inputContactEmail" type="text">
+        <div id="contactLinksEditor"></div>
+        <button id="addContactLink" type="button">Add Contact Link</button>
+      </details>
+
+      <details>
+        <summary>Theme + Fonts</summary>
+        <label>Theme Type</label>
+        <select id="themeType">
+          <option value="default">Default</option>
+          <option value="software-engineer">Software Engineer — Terminal Console</option>
+          <option value="game-developer">Game Developer — Retro Arcade</option>
+          <option value="graphic-designer">Graphic Designer — Creative Studio</option>
+          <option value="architect">Architect — Blueprint Drafting Table</option>
+          <option value="aerospace-engineer">Aerospace Engineer — Mission Control</option>
+          <option value="cybersecurity-analyst">Cybersecurity Analyst — Security Operations Centre</option>
+          <option value="data-scientist">Data Scientist — Analytics Dashboard</option>
+          <option value="medical-doctor">Medical Doctor — Clinical Monitoring System</option>
+          <option value="lawyer">Lawyer — Legal Case Archive</option>
+          <option value="journalist">Journalist — Newsroom Layout</option>
+          <option value="photographer">Photographer — Camera Viewfinder</option>
+          <option value="chef">Chef — Modern Recipe Book</option>
+          <option value="environmental-scientist">Environmental Scientist — Nature Field Journal</option>
+          <option value="marine-biologist">Marine Biologist — Deep Ocean Explorer</option>
+          <option value="automotive-engineer">Automotive Engineer — Garage Workbench</option>
+          <option value="teacher">Teacher — Digital Classroom</option>
+          <option value="archaeologist">Archaeologist — Excavation Logbook</option>
+          <option value="music-producer">Music Producer — Audio Mixing Studio</option>
+          <option value="film-director">Film Director — Movie Production Studio</option>
+          <option value="pilot">Pilot — Aircraft Cockpit</option>
+          <option value="entrepreneur">Entrepreneur — Startup Pitch Deck</option>
+          <option value="construction-engineer">Construction Engineer — Building Site Dashboard</option>
+          <option value="astronomer">Astronomer — Observatory Interface</option>
+          <option value="robotics-engineer">Robotics Engineer — Robotics Laboratory</option>
+          <option value="fashion-designer">Fashion Designer — Runway Studio</option>
+          <option value="detective-investigator">Detective / Investigator — Investigation Board</option>
+          <option value="historian">Historian — Digital Archive Library</option>
+          <option value="ui-ux-designer">UI/UX Designer — Interactive Wireframe</option>
+          <option value="civil-engineer">Civil Engineer — Infrastructure Planner</option>
+          <option value="robotics-ai-researcher">Robotics / AI Researcher — AI Research Lab</option>
+        </select>
+        <label>Background Main</label>
+        <input id="colorBgMain" type="color">
+        <label>Background Secondary</label>
+        <input id="colorBgSecondary" type="color">
+        <label>Text Main</label>
+        <input id="colorTextMain" type="color">
+        <label>Text Inverse</label>
+        <input id="colorTextInverse" type="color">
+        <label>Links / Accent</label>
+        <input id="colorLinkAccent" type="color">
+        <label>Headings Font (Google Font Name)</label>
+        <input id="fontHeadings" type="text" placeholder="Playfair Display">
+        <label>Titles Font (Google Font Name)</label>
+        <input id="fontTitles" type="text" placeholder="Poppins">
+        <label>Text Font (Google Font Name)</label>
+        <input id="fontText" type="text" placeholder="Inter">
+      </details>
+
+      <div class="editor-actions">
+        <button id="saveAll" type="button">Save All</button>
+        <button id="resetAll" type="button">Reset All</button>
+      </div>
+    </aside>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

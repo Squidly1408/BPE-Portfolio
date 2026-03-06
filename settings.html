@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BPE Settings</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+  <header>
+    <div class="utility-bar">
+      <div class="container utility-inner">
+        <div class="utility-links">
+          <a href="index.html">Home</a>
+          <a href="help.html">Help</a>
+        </div>
+        <div class="utility-actions">
+          <span id="welcomeText"></span>
+          <button id="signOut" class="utility-btn">Sign out</button>
+        </div>
+      </div>
+    </div>
+    <div class="main-nav-wrap interior-nav">
+      <div class="container main-nav">
+        <a class="logo" href="dashboard.html">BPE Portfolio Studio</a>
+        <nav class="nav-links">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="settings.html">Settings</a>
+          <a href="account.html">Account</a>
+          <a href="help.html">Help</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel create">
+      <h1>Settings</h1>
+      <p>Set your default platform preferences for portfolio creation and editing.</p>
+
+      <form id="settingsForm">
+        <label>School / Campus Name</label>
+        <input id="campusName" type="text" placeholder="e.g. Cooks Hill Campus">
+
+        <label>Default Portfolio Theme</label>
+        <select id="defaultTheme">
+          <option value="default">Default</option>
+          <option value="software-engineer">Software Engineer</option>
+          <option value="game-developer">Game Developer</option>
+          <option value="graphic-designer">Graphic Designer</option>
+          <option value="architect">Architect</option>
+          <option value="aerospace-engineer">Aerospace Engineer</option>
+          <option value="cybersecurity-analyst">Cybersecurity Analyst</option>
+          <option value="data-scientist">Data Scientist</option>
+          <option value="medical-doctor">Medical Doctor</option>
+        </select>
+
+        <label>Default Cohort Label</label>
+        <input id="defaultCohort" type="text" placeholder="e.g. 2026 Graduation">
+
+        <label>
+          <input id="autoOpenEditor" type="checkbox">
+          Automatically open editor after creating a portfolio
+        </label>
+
+        <label>
+          <input id="showPublicBadge" type="checkbox">
+          Show "Official BPE Portfolio" badge by default
+        </label>
+
+        <button class="btn primary block" type="submit">Save Settings</button>
+      </form>
+      <p class="message" id="settingsMessage"></p>
+    </section>
+
+    <section class="panel list">
+      <div class="list-head">
+        <h2>Current Defaults</h2>
+      </div>
+      <div class="portfolio-list" id="settingsSummary"></div>
+    </section>
+  </main>
+
+  <script src="settings.js"></script>
+</body>
+
+</html>

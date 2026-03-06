@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BPE Portfolio Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+  <header>
+    <div class="utility-bar">
+      <div class="container utility-inner">
+        <div class="utility-links">
+          <a href="index.html">Home</a>
+          <a href="help.html">Help</a>
+        </div>
+        <div class="utility-actions">
+          <span id="welcomeText"></span>
+          <button id="signOut" class="utility-btn">Sign out</button>
+        </div>
+      </div>
+    </div>
+    <div class="main-nav-wrap interior-nav">
+      <div class="container main-nav">
+        <a class="logo" href="dashboard.html">BPE Portfolio Studio</a>
+        <nav class="nav-links">
+          <a href="dashboard.html">Dashboard</a>
+          <a href="settings.html">Settings</a>
+          <a href="account.html">Account</a>
+          <a href="help.html">Help</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel create">
+      <h1>Create Official Portfolio</h1>
+      <p>Start a new BPE portfolio and choose a profession theme. You can fully edit it in the live editor after creation.</p>
+
+      <form id="createPortfolioForm">
+        <label>Portfolio Name</label>
+        <input id="portfolioName" type="text" placeholder="e.g. Lucas Newman Senior Portfolio" required>
+
+        <label>Career Theme</label>
+        <select id="portfolioTheme" required>
+          <option value="default">Default</option>
+          <option value="software-engineer">Software Engineer</option>
+          <option value="game-developer">Game Developer</option>
+          <option value="graphic-designer">Graphic Designer</option>
+          <option value="architect">Architect</option>
+          <option value="aerospace-engineer">Aerospace Engineer</option>
+          <option value="cybersecurity-analyst">Cybersecurity Analyst</option>
+          <option value="data-scientist">Data Scientist</option>
+          <option value="medical-doctor">Medical Doctor</option>
+          <option value="lawyer">Lawyer</option>
+          <option value="journalist">Journalist</option>
+          <option value="photographer">Photographer</option>
+          <option value="chef">Chef</option>
+          <option value="environmental-scientist">Environmental Scientist</option>
+          <option value="marine-biologist">Marine Biologist</option>
+          <option value="automotive-engineer">Automotive Engineer</option>
+          <option value="teacher">Teacher</option>
+          <option value="archaeologist">Archaeologist</option>
+          <option value="music-producer">Music Producer</option>
+          <option value="film-director">Film Director</option>
+          <option value="pilot">Pilot</option>
+          <option value="entrepreneur">Entrepreneur</option>
+          <option value="construction-engineer">Construction Engineer</option>
+          <option value="astronomer">Astronomer</option>
+          <option value="robotics-engineer">Robotics Engineer</option>
+          <option value="fashion-designer">Fashion Designer</option>
+          <option value="detective-investigator">Detective / Investigator</option>
+          <option value="historian">Historian</option>
+          <option value="ui-ux-designer">UI/UX Designer</option>
+          <option value="civil-engineer">Civil Engineer</option>
+          <option value="robotics-ai-researcher">Robotics / AI Researcher</option>
+        </select>
+
+        <label>Year / Cohort</label>
+        <input id="portfolioCohort" type="text" placeholder="e.g. 2026 Graduation">
+
+        <button class="btn primary block" type="submit">Create Portfolio</button>
+      </form>
+      <p id="formMessage" class="message"></p>
+    </section>
+
+    <section class="panel list">
+      <div class="list-head">
+        <h2>My Portfolios</h2>
+        <button id="refreshList" class="btn ghost">Refresh</button>
+      </div>
+      <div id="portfolioList" class="portfolio-list"></div>
+    </section>
+  </main>
+
+  <script src="dashboard.js"></script>
+</body>
+
+</html>
