@@ -2,75 +2,76 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BPE Account</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="dashboard.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BPE Account</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 
 <body>
-  <header>
-    <div class="utility-bar">
-      <div class="container utility-inner">
-        <div class="utility-links">
-          <a href="index.html">Home</a>
-          <a href="help.html">Help</a>
+    <header>
+        <div class="utility-bar">
+            <div class="container utility-inner">
+                <div class="utility-links">
+                    <a href="index.html">Home</a>
+                    <a href="help.html">Help</a>
+                </div>
+                <div class="utility-actions">
+                    <span id="welcomeText"></span>
+                    <button id="signOut" class="utility-btn">Sign out</button>
+                </div>
+            </div>
         </div>
-        <div class="utility-actions">
-          <span id="welcomeText"></span>
-          <button id="signOut" class="utility-btn">Sign out</button>
+        <div class="main-nav-wrap interior-nav">
+            <div class="container main-nav">
+                <a class="logo" href="dashboard.html">BPE Portfolio Studio</a>
+                <nav class="nav-links">
+                    <a href="dashboard.html">Dashboard</a>
+                    <a href="settings.html">Settings</a>
+                    <a href="account.html">Account</a>
+                    <a href="help.html">Help</a>
+                </nav>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="main-nav-wrap interior-nav">
-      <div class="container main-nav">
-        <a class="logo" href="dashboard.html">BPE Portfolio Studio</a>
-        <nav class="nav-links">
-          <a href="dashboard.html">Dashboard</a>
-          <a href="settings.html">Settings</a>
-          <a href="account.html">Account</a>
-          <a href="help.html">Help</a>
-        </nav>
-      </div>
-    </div>
-  </header>
+    </header>
 
-  <main class="layout">
-    <section class="panel create">
-      <h1>Account</h1>
-      <p>Manage your student profile and login details.</p>
+    <main class="layout">
+        <section class="panel create">
+            <h1>Account</h1>
+            <p>Manage your student profile and login details.</p>
 
-      <form id="accountForm">
-        <label>Full Name</label>
-        <input id="accountName" type="text" required>
+            <form id="accountForm">
+                <label>Full Name</label>
+                <input id="accountName" type="text" required>
 
-        <label>Email</label>
-        <input id="accountEmail" type="email" required>
+                <label>Email</label>
+                <input id="accountEmail" type="email" required>
 
-        <label>New Password (optional)</label>
-        <input id="accountPassword" type="password" minlength="6" placeholder="Leave blank to keep current password">
+                <label>New Password (optional)</label>
+                <input id="accountPassword" type="password" minlength="6"
+                    placeholder="Leave blank to keep current password">
 
-        <button class="btn primary block" type="submit">Update Account</button>
-      </form>
-      <p class="message" id="accountMessage"></p>
-    </section>
+                <button class="btn primary block" type="submit">Update Account</button>
+            </form>
+            <p class="message" id="accountMessage"></p>
+        </section>
 
-    <section class="panel list">
-      <div class="list-head">
-        <h2>Account Actions</h2>
-      </div>
-      <article class="portfolio-card">
-        <h3>Danger Zone</h3>
-        <p class="portfolio-meta">Delete your account and all portfolio records owned by this account.</p>
-        <div class="portfolio-actions">
-          <button id="deleteAccount" class="btn">Delete Account</button>
-        </div>
-      </article>
-    </section>
-  </main>
+        <section class="panel list">
+            <div class="list-head">
+                <h2>Account Actions</h2>
+            </div>
+            <article class="portfolio-card">
+                <h3>Danger Zone</h3>
+                <p class="portfolio-meta">Delete your account and all portfolio records owned by this account.</p>
+                <div class="portfolio-actions">
+                    <button id="deleteAccount" class="btn">Delete Account</button>
+                </div>
+            </article>
+        </section>
+    </main>
 
-  <script src="account.js"></script>
+    <script src="account.js"></script>
 </body>
 
 </html>

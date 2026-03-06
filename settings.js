@@ -43,13 +43,15 @@ function saveAllSettings(value) {
 
 function getMySettings(email) {
   const all = getAllSettings();
-  return all[email] || {
-    campusName: "",
-    defaultTheme: "default",
-    defaultCohort: "",
-    autoOpenEditor: false,
-    showPublicBadge: true
-  };
+  return (
+    all[email] || {
+      campusName: "",
+      defaultTheme: "default",
+      defaultCohort: "",
+      autoOpenEditor: false,
+      showPublicBadge: true,
+    }
+  );
 }
 
 function renderSummary(settings) {
@@ -83,7 +85,7 @@ if (session) {
       defaultTheme: document.getElementById("defaultTheme").value,
       defaultCohort: document.getElementById("defaultCohort").value.trim(),
       autoOpenEditor: document.getElementById("autoOpenEditor").checked,
-      showPublicBadge: document.getElementById("showPublicBadge").checked
+      showPublicBadge: document.getElementById("showPublicBadge").checked,
     };
 
     const all = getAllSettings();

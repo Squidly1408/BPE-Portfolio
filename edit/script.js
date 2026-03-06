@@ -21,37 +21,316 @@ const DEFAULT_BPE_FLOWER_SVG = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl
 </svg>`;
 
 const themeTypes = {
-  default: { bgMain: "#eef6ff", bgSecondary: "#ffffff", textMain: "#0f172a", textInverse: "#f8fafc", linkAccent: "#2563eb", fontHeadings: "Inter", fontTitles: "Inter", fontText: "Inter" },
-  "software-engineer": { bgMain: "#05070a", bgSecondary: "#0d1117", textMain: "#8fffa9", textInverse: "#03110a", linkAccent: "#22d3ee", fontHeadings: "Share Tech Mono", fontTitles: "Share Tech Mono", fontText: "JetBrains Mono" },
-  "game-developer": { bgMain: "#170429", bgSecondary: "#250842", textMain: "#f5e8ff", textInverse: "#12041f", linkAccent: "#22d3ee", fontHeadings: "Press Start 2P", fontTitles: "Press Start 2P", fontText: "VT323" },
-  "graphic-designer": { bgMain: "#f7f4ff", bgSecondary: "#ffffff", textMain: "#261c4a", textInverse: "#f8f4ff", linkAccent: "#8b5cf6", fontHeadings: "Space Grotesk", fontTitles: "Space Grotesk", fontText: "Inter" },
-  architect: { bgMain: "#0d2b52", bgSecondary: "#123c6b", textMain: "#e7f6ff", textInverse: "#0d2b52", linkAccent: "#9be7ff", fontHeadings: "Montserrat", fontTitles: "Montserrat", fontText: "Inter" },
-  "aerospace-engineer": { bgMain: "#0b132b", bgSecondary: "#1b243f", textMain: "#f7fafc", textInverse: "#0b132b", linkAccent: "#f97316", fontHeadings: "Orbitron", fontTitles: "Orbitron", fontText: "Inter" },
-  "cybersecurity-analyst": { bgMain: "#050505", bgSecondary: "#0f0f0f", textMain: "#9cff57", textInverse: "#050505", linkAccent: "#ef4444", fontHeadings: "Share Tech Mono", fontTitles: "Share Tech Mono", fontText: "JetBrains Mono" },
-  "data-scientist": { bgMain: "#f2f5ff", bgSecondary: "#ffffff", textMain: "#1e2a5a", textInverse: "#f8faff", linkAccent: "#6366f1", fontHeadings: "Manrope", fontTitles: "Manrope", fontText: "Inter" },
-  "medical-doctor": { bgMain: "#f5fbff", bgSecondary: "#ffffff", textMain: "#0f2742", textInverse: "#ffffff", linkAccent: "#0891b2", fontHeadings: "Nunito", fontTitles: "Nunito", fontText: "Inter" },
-  lawyer: { bgMain: "#f8eed8", bgSecondary: "#fff9eb", textMain: "#4a0f2e", textInverse: "#fff7e6", linkAccent: "#b8860b", fontHeadings: "Merriweather", fontTitles: "Merriweather", fontText: "Lora" },
-  journalist: { bgMain: "#f8f8f8", bgSecondary: "#ffffff", textMain: "#111111", textInverse: "#ffffff", linkAccent: "#c1121f", fontHeadings: "Libre Baskerville", fontTitles: "Libre Baskerville", fontText: "Source Sans 3" },
-  photographer: { bgMain: "#1f1f1f", bgSecondary: "#2f2f2f", textMain: "#f5f5f5", textInverse: "#111111", linkAccent: "#d1d5db", fontHeadings: "Poppins", fontTitles: "Poppins", fontText: "Inter" },
-  chef: { bgMain: "#fff6ea", bgSecondary: "#fffdf7", textMain: "#5a341e", textInverse: "#fff8ef", linkAccent: "#d97706", fontHeadings: "Playfair Display", fontTitles: "Playfair Display", fontText: "Nunito" },
-  "environmental-scientist": { bgMain: "#edf5e7", bgSecondary: "#fbf8ee", textMain: "#2f4f2f", textInverse: "#f9fff4", linkAccent: "#4b7f52", fontHeadings: "Cabin", fontTitles: "Cabin", fontText: "Merriweather" },
-  "marine-biologist": { bgMain: "#04243d", bgSecondary: "#0b3b63", textMain: "#def7ff", textInverse: "#032133", linkAccent: "#2dd4bf", fontHeadings: "Outfit", fontTitles: "Outfit", fontText: "Inter" },
-  "automotive-engineer": { bgMain: "#1f2937", bgSecondary: "#111827", textMain: "#e5e7eb", textInverse: "#0f172a", linkAccent: "#f97316", fontHeadings: "Rajdhani", fontTitles: "Rajdhani", fontText: "Inter" },
-  teacher: { bgMain: "#0f5132", bgSecondary: "#1f6b45", textMain: "#ecfdf3", textInverse: "#0f3f2b", linkAccent: "#f8fafc", fontHeadings: "Patrick Hand", fontTitles: "Patrick Hand", fontText: "Nunito" },
-  archaeologist: { bgMain: "#f5ead7", bgSecondary: "#fff4e4", textMain: "#5a3e2b", textInverse: "#fff7ec", linkAccent: "#9a6b3a", fontHeadings: "Cinzel", fontTitles: "Cinzel", fontText: "Lora" },
-  "music-producer": { bgMain: "#0b1020", bgSecondary: "#131a2f", textMain: "#e5ecff", textInverse: "#090f1b", linkAccent: "#22c55e", fontHeadings: "Sora", fontTitles: "Sora", fontText: "Inter" },
-  "film-director": { bgMain: "#1a1a1a", bgSecondary: "#262626", textMain: "#f5f5f5", textInverse: "#0f0f0f", linkAccent: "#f59e0b", fontHeadings: "Bebas Neue", fontTitles: "Bebas Neue", fontText: "Inter" },
-  pilot: { bgMain: "#0a1f3d", bgSecondary: "#133157", textMain: "#e6f1ff", textInverse: "#071b33", linkAccent: "#38bdf8", fontHeadings: "Exo 2", fontTitles: "Exo 2", fontText: "Inter" },
-  entrepreneur: { bgMain: "#f7f9fc", bgSecondary: "#ffffff", textMain: "#0f172a", textInverse: "#f8fafc", linkAccent: "#2563eb", fontHeadings: "DM Sans", fontTitles: "DM Sans", fontText: "Inter" },
-  "construction-engineer": { bgMain: "#202a36", bgSecondary: "#141c25", textMain: "#e2e8f0", textInverse: "#0f172a", linkAccent: "#f59e0b", fontHeadings: "Oswald", fontTitles: "Oswald", fontText: "Inter" },
-  astronomer: { bgMain: "#090b1a", bgSecondary: "#121634", textMain: "#e0e7ff", textInverse: "#070916", linkAccent: "#a78bfa", fontHeadings: "Space Grotesk", fontTitles: "Space Grotesk", fontText: "Inter" },
-  "robotics-engineer": { bgMain: "#0f172a", bgSecondary: "#1e293b", textMain: "#e2e8f0", textInverse: "#0b1220", linkAccent: "#06b6d4", fontHeadings: "Orbitron", fontTitles: "Orbitron", fontText: "Inter" },
-  "fashion-designer": { bgMain: "#fff1f6", bgSecondary: "#ffffff", textMain: "#4a1831", textInverse: "#fff7fb", linkAccent: "#ec4899", fontHeadings: "Cormorant Garamond", fontTitles: "Cormorant Garamond", fontText: "Inter" },
-  "detective-investigator": { bgMain: "#1c1c1c", bgSecondary: "#2a2a2a", textMain: "#f1f5f9", textInverse: "#0f0f0f", linkAccent: "#f43f5e", fontHeadings: "Special Elite", fontTitles: "Special Elite", fontText: "Inter" },
-  historian: { bgMain: "#f4eee2", bgSecondary: "#fffaf1", textMain: "#3e3022", textInverse: "#fff8ee", linkAccent: "#8b5e3c", fontHeadings: "EB Garamond", fontTitles: "EB Garamond", fontText: "Lora" },
-  "ui-ux-designer": { bgMain: "#f5f8ff", bgSecondary: "#ffffff", textMain: "#1f2a44", textInverse: "#f7fbff", linkAccent: "#3b82f6", fontHeadings: "Manrope", fontTitles: "Manrope", fontText: "Inter" },
-  "civil-engineer": { bgMain: "#f3f7fb", bgSecondary: "#ffffff", textMain: "#1f3b57", textInverse: "#f8fbff", linkAccent: "#0ea5e9", fontHeadings: "Archivo", fontTitles: "Archivo", fontText: "Inter" },
-  "robotics-ai-researcher": { bgMain: "#0a1220", bgSecondary: "#121b2d", textMain: "#dbeafe", textInverse: "#050c16", linkAccent: "#22d3ee", fontHeadings: "Space Grotesk", fontTitles: "Space Grotesk", fontText: "JetBrains Mono" }
+  default: {
+    bgMain: "#eef6ff",
+    bgSecondary: "#ffffff",
+    textMain: "#0f172a",
+    textInverse: "#f8fafc",
+    linkAccent: "#2563eb",
+    fontHeadings: "Inter",
+    fontTitles: "Inter",
+    fontText: "Inter",
+  },
+  "software-engineer": {
+    bgMain: "#05070a",
+    bgSecondary: "#0d1117",
+    textMain: "#8fffa9",
+    textInverse: "#03110a",
+    linkAccent: "#22d3ee",
+    fontHeadings: "Share Tech Mono",
+    fontTitles: "Share Tech Mono",
+    fontText: "JetBrains Mono",
+  },
+  "game-developer": {
+    bgMain: "#170429",
+    bgSecondary: "#250842",
+    textMain: "#f5e8ff",
+    textInverse: "#12041f",
+    linkAccent: "#22d3ee",
+    fontHeadings: "Press Start 2P",
+    fontTitles: "Press Start 2P",
+    fontText: "VT323",
+  },
+  "graphic-designer": {
+    bgMain: "#f7f4ff",
+    bgSecondary: "#ffffff",
+    textMain: "#261c4a",
+    textInverse: "#f8f4ff",
+    linkAccent: "#8b5cf6",
+    fontHeadings: "Space Grotesk",
+    fontTitles: "Space Grotesk",
+    fontText: "Inter",
+  },
+  architect: {
+    bgMain: "#0d2b52",
+    bgSecondary: "#123c6b",
+    textMain: "#e7f6ff",
+    textInverse: "#0d2b52",
+    linkAccent: "#9be7ff",
+    fontHeadings: "Montserrat",
+    fontTitles: "Montserrat",
+    fontText: "Inter",
+  },
+  "aerospace-engineer": {
+    bgMain: "#0b132b",
+    bgSecondary: "#1b243f",
+    textMain: "#f7fafc",
+    textInverse: "#0b132b",
+    linkAccent: "#f97316",
+    fontHeadings: "Orbitron",
+    fontTitles: "Orbitron",
+    fontText: "Inter",
+  },
+  "cybersecurity-analyst": {
+    bgMain: "#050505",
+    bgSecondary: "#0f0f0f",
+    textMain: "#9cff57",
+    textInverse: "#050505",
+    linkAccent: "#ef4444",
+    fontHeadings: "Share Tech Mono",
+    fontTitles: "Share Tech Mono",
+    fontText: "JetBrains Mono",
+  },
+  "data-scientist": {
+    bgMain: "#f2f5ff",
+    bgSecondary: "#ffffff",
+    textMain: "#1e2a5a",
+    textInverse: "#f8faff",
+    linkAccent: "#6366f1",
+    fontHeadings: "Manrope",
+    fontTitles: "Manrope",
+    fontText: "Inter",
+  },
+  "medical-doctor": {
+    bgMain: "#f5fbff",
+    bgSecondary: "#ffffff",
+    textMain: "#0f2742",
+    textInverse: "#ffffff",
+    linkAccent: "#0891b2",
+    fontHeadings: "Nunito",
+    fontTitles: "Nunito",
+    fontText: "Inter",
+  },
+  lawyer: {
+    bgMain: "#f8eed8",
+    bgSecondary: "#fff9eb",
+    textMain: "#4a0f2e",
+    textInverse: "#fff7e6",
+    linkAccent: "#b8860b",
+    fontHeadings: "Merriweather",
+    fontTitles: "Merriweather",
+    fontText: "Lora",
+  },
+  journalist: {
+    bgMain: "#f8f8f8",
+    bgSecondary: "#ffffff",
+    textMain: "#111111",
+    textInverse: "#ffffff",
+    linkAccent: "#c1121f",
+    fontHeadings: "Libre Baskerville",
+    fontTitles: "Libre Baskerville",
+    fontText: "Source Sans 3",
+  },
+  photographer: {
+    bgMain: "#1f1f1f",
+    bgSecondary: "#2f2f2f",
+    textMain: "#f5f5f5",
+    textInverse: "#111111",
+    linkAccent: "#d1d5db",
+    fontHeadings: "Poppins",
+    fontTitles: "Poppins",
+    fontText: "Inter",
+  },
+  chef: {
+    bgMain: "#fff6ea",
+    bgSecondary: "#fffdf7",
+    textMain: "#5a341e",
+    textInverse: "#fff8ef",
+    linkAccent: "#d97706",
+    fontHeadings: "Playfair Display",
+    fontTitles: "Playfair Display",
+    fontText: "Nunito",
+  },
+  "environmental-scientist": {
+    bgMain: "#edf5e7",
+    bgSecondary: "#fbf8ee",
+    textMain: "#2f4f2f",
+    textInverse: "#f9fff4",
+    linkAccent: "#4b7f52",
+    fontHeadings: "Cabin",
+    fontTitles: "Cabin",
+    fontText: "Merriweather",
+  },
+  "marine-biologist": {
+    bgMain: "#04243d",
+    bgSecondary: "#0b3b63",
+    textMain: "#def7ff",
+    textInverse: "#032133",
+    linkAccent: "#2dd4bf",
+    fontHeadings: "Outfit",
+    fontTitles: "Outfit",
+    fontText: "Inter",
+  },
+  "automotive-engineer": {
+    bgMain: "#1f2937",
+    bgSecondary: "#111827",
+    textMain: "#e5e7eb",
+    textInverse: "#0f172a",
+    linkAccent: "#f97316",
+    fontHeadings: "Rajdhani",
+    fontTitles: "Rajdhani",
+    fontText: "Inter",
+  },
+  teacher: {
+    bgMain: "#0f5132",
+    bgSecondary: "#1f6b45",
+    textMain: "#ecfdf3",
+    textInverse: "#0f3f2b",
+    linkAccent: "#f8fafc",
+    fontHeadings: "Patrick Hand",
+    fontTitles: "Patrick Hand",
+    fontText: "Nunito",
+  },
+  archaeologist: {
+    bgMain: "#f5ead7",
+    bgSecondary: "#fff4e4",
+    textMain: "#5a3e2b",
+    textInverse: "#fff7ec",
+    linkAccent: "#9a6b3a",
+    fontHeadings: "Cinzel",
+    fontTitles: "Cinzel",
+    fontText: "Lora",
+  },
+  "music-producer": {
+    bgMain: "#0b1020",
+    bgSecondary: "#131a2f",
+    textMain: "#e5ecff",
+    textInverse: "#090f1b",
+    linkAccent: "#22c55e",
+    fontHeadings: "Sora",
+    fontTitles: "Sora",
+    fontText: "Inter",
+  },
+  "film-director": {
+    bgMain: "#1a1a1a",
+    bgSecondary: "#262626",
+    textMain: "#f5f5f5",
+    textInverse: "#0f0f0f",
+    linkAccent: "#f59e0b",
+    fontHeadings: "Bebas Neue",
+    fontTitles: "Bebas Neue",
+    fontText: "Inter",
+  },
+  pilot: {
+    bgMain: "#0a1f3d",
+    bgSecondary: "#133157",
+    textMain: "#e6f1ff",
+    textInverse: "#071b33",
+    linkAccent: "#38bdf8",
+    fontHeadings: "Exo 2",
+    fontTitles: "Exo 2",
+    fontText: "Inter",
+  },
+  entrepreneur: {
+    bgMain: "#f7f9fc",
+    bgSecondary: "#ffffff",
+    textMain: "#0f172a",
+    textInverse: "#f8fafc",
+    linkAccent: "#2563eb",
+    fontHeadings: "DM Sans",
+    fontTitles: "DM Sans",
+    fontText: "Inter",
+  },
+  "construction-engineer": {
+    bgMain: "#202a36",
+    bgSecondary: "#141c25",
+    textMain: "#e2e8f0",
+    textInverse: "#0f172a",
+    linkAccent: "#f59e0b",
+    fontHeadings: "Oswald",
+    fontTitles: "Oswald",
+    fontText: "Inter",
+  },
+  astronomer: {
+    bgMain: "#090b1a",
+    bgSecondary: "#121634",
+    textMain: "#e0e7ff",
+    textInverse: "#070916",
+    linkAccent: "#a78bfa",
+    fontHeadings: "Space Grotesk",
+    fontTitles: "Space Grotesk",
+    fontText: "Inter",
+  },
+  "robotics-engineer": {
+    bgMain: "#0f172a",
+    bgSecondary: "#1e293b",
+    textMain: "#e2e8f0",
+    textInverse: "#0b1220",
+    linkAccent: "#06b6d4",
+    fontHeadings: "Orbitron",
+    fontTitles: "Orbitron",
+    fontText: "Inter",
+  },
+  "fashion-designer": {
+    bgMain: "#fff1f6",
+    bgSecondary: "#ffffff",
+    textMain: "#4a1831",
+    textInverse: "#fff7fb",
+    linkAccent: "#ec4899",
+    fontHeadings: "Cormorant Garamond",
+    fontTitles: "Cormorant Garamond",
+    fontText: "Inter",
+  },
+  "detective-investigator": {
+    bgMain: "#1c1c1c",
+    bgSecondary: "#2a2a2a",
+    textMain: "#f1f5f9",
+    textInverse: "#0f0f0f",
+    linkAccent: "#f43f5e",
+    fontHeadings: "Special Elite",
+    fontTitles: "Special Elite",
+    fontText: "Inter",
+  },
+  historian: {
+    bgMain: "#f4eee2",
+    bgSecondary: "#fffaf1",
+    textMain: "#3e3022",
+    textInverse: "#fff8ee",
+    linkAccent: "#8b5e3c",
+    fontHeadings: "EB Garamond",
+    fontTitles: "EB Garamond",
+    fontText: "Lora",
+  },
+  "ui-ux-designer": {
+    bgMain: "#f5f8ff",
+    bgSecondary: "#ffffff",
+    textMain: "#1f2a44",
+    textInverse: "#f7fbff",
+    linkAccent: "#3b82f6",
+    fontHeadings: "Manrope",
+    fontTitles: "Manrope",
+    fontText: "Inter",
+  },
+  "civil-engineer": {
+    bgMain: "#f3f7fb",
+    bgSecondary: "#ffffff",
+    textMain: "#1f3b57",
+    textInverse: "#f8fbff",
+    linkAccent: "#0ea5e9",
+    fontHeadings: "Archivo",
+    fontTitles: "Archivo",
+    fontText: "Inter",
+  },
+  "robotics-ai-researcher": {
+    bgMain: "#0a1220",
+    bgSecondary: "#121b2d",
+    textMain: "#dbeafe",
+    textInverse: "#050c16",
+    linkAccent: "#22d3ee",
+    fontHeadings: "Space Grotesk",
+    fontTitles: "Space Grotesk",
+    fontText: "JetBrains Mono",
+  },
 };
 
 const themeClassNames = Object.keys(themeTypes).map((type) => `theme-${type}`);
@@ -63,17 +342,17 @@ const defaultState = {
     { label: "Art", href: "#art" },
     { label: "Research", href: "#research" },
     { label: "Skills", href: "#skills" },
-    { label: "Contact", href: "#contact" }
+    { label: "Contact", href: "#contact" },
   ],
   hero: {
     title: "Portfolio",
     subtitle: "Marine Biology • Scientific Illustration • Conservation",
     buttonText: "View Profile",
-    buttonHref: "#about"
+    buttonHref: "#about",
   },
   about: {
     title: "About Mil",
-    text: "Mil is a marine biology student and ocean artist passionate about reef ecosystems, pelagic life, and marine conservation. Her work merges scientific field research with visual storytelling."
+    text: "Mil is a marine biology student and ocean artist passionate about reef ecosystems, pelagic life, and marine conservation. Her work merges scientific field research with visual storytelling.",
   },
   profile: {
     petalScales: {
@@ -82,14 +361,14 @@ const defaultState = {
       petal3: 125,
       petal4: 125,
       petal5: 125,
-      petal6: 125
+      petal6: 125,
     },
     resources: [
       { label: "Autobiography", href: "#" },
       { label: "Senior Project", href: "#" },
       { label: "Video Profile", href: "#" },
-      { label: "Future Pathway Plan", href: "#" }
-    ]
+      { label: "Future Pathway Plan", href: "#" },
+    ],
   },
   galleryTitle: "Gallery",
   gallery: [
@@ -99,8 +378,9 @@ const defaultState = {
       description: "Illustration exploring plankton light emission patterns.",
       image: "../assets/img/reef_bioluminescence.jpg",
       popupTitle: "Reef Bioluminescence",
-      popupText: "This illustration highlights how reef organisms and plankton emit light patterns at night.",
-      popupImage: "../assets/img/reef_bioluminescence.jpg"
+      popupText:
+        "This illustration highlights how reef organisms and plankton emit light patterns at night.",
+      popupImage: "../assets/img/reef_bioluminescence.jpg",
     },
     {
       id: `g-${Date.now()}-2`,
@@ -108,27 +388,30 @@ const defaultState = {
       description: "Mixed media piece inspired by field observations.",
       image: "../assets/img/tital_ecosystem.png",
       popupTitle: "Tidal Ecosystem Study",
-      popupText: "This mixed media study documents species variation and habitat changes across tidal zones.",
-      popupImage: "../assets/img/tital_ecosystem.png"
-    }
+      popupText:
+        "This mixed media study documents species variation and habitat changes across tidal zones.",
+      popupImage: "../assets/img/tital_ecosystem.png",
+    },
   ],
   internshipTitle: "Research & Internships",
   internships: [
     {
       id: `i-${Date.now()}-1`,
       title: "Marine Field Internship — Coastal Research Lab",
-      description: "Conducted reef transects, assisted in specimen cataloguing, and logged ecological data.",
+      description:
+        "Conducted reef transects, assisted in specimen cataloguing, and logged ecological data.",
       popupTitle: "Marine Field Internship — Coastal Research Lab",
-      popupText: "Completed reef transects, supported specimen cataloging, and translated findings into visual summaries.",
-      popupImage: ""
-    }
+      popupText:
+        "Completed reef transects, supported specimen cataloging, and translated findings into visual summaries.",
+      popupImage: "",
+    },
   ],
   skillsTitle: "Skills",
   skills: [
     "Marine Ecology",
     "Field Research & Sampling",
     "Data Interpretation",
-    "Scientific Illustration"
+    "Scientific Illustration",
   ],
   contact: {
     title: "Contact",
@@ -136,8 +419,8 @@ const defaultState = {
     links: [
       { label: "Instagram", href: "https://www.instagram.com/" },
       { label: "LinkedIn", href: "https://www.linkedin.com/" },
-      { label: "ResearchGate", href: "https://www.researchgate.net/" }
-    ]
+      { label: "ResearchGate", href: "https://www.researchgate.net/" },
+    ],
   },
   theme: {
     styleType: "default",
@@ -148,8 +431,8 @@ const defaultState = {
     linkAccent: "#2563eb",
     fontHeadings: "Inter",
     fontTitles: "Inter",
-    fontText: "Inter"
-  }
+    fontText: "Inter",
+  },
 };
 
 let state = structuredClone(defaultState);
@@ -169,14 +452,29 @@ function loadState() {
       profile: {
         ...defaultState.profile,
         ...(parsed.profile || {}),
-        resources: parsed.profile?.resources || structuredClone(defaultState.profile.resources)
+        resources:
+          parsed.profile?.resources ||
+          structuredClone(defaultState.profile.resources),
       },
-      contact: { ...defaultState.contact, ...(parsed.contact || {}), links: parsed.contact?.links || structuredClone(defaultState.contact.links) },
+      contact: {
+        ...defaultState.contact,
+        ...(parsed.contact || {}),
+        links:
+          parsed.contact?.links || structuredClone(defaultState.contact.links),
+      },
       theme: { ...defaultState.theme, ...(parsed.theme || {}) },
-      gallery: Array.isArray(parsed.gallery) ? parsed.gallery : structuredClone(defaultState.gallery),
-      internships: Array.isArray(parsed.internships) ? parsed.internships : structuredClone(defaultState.internships),
-      skills: Array.isArray(parsed.skills) ? parsed.skills : structuredClone(defaultState.skills),
-      nav: Array.isArray(parsed.nav) ? parsed.nav : structuredClone(defaultState.nav)
+      gallery: Array.isArray(parsed.gallery)
+        ? parsed.gallery
+        : structuredClone(defaultState.gallery),
+      internships: Array.isArray(parsed.internships)
+        ? parsed.internships
+        : structuredClone(defaultState.internships),
+      skills: Array.isArray(parsed.skills)
+        ? parsed.skills
+        : structuredClone(defaultState.skills),
+      nav: Array.isArray(parsed.nav)
+        ? parsed.nav
+        : structuredClone(defaultState.nav),
     };
 
     state.profile.petalScales = {
@@ -185,7 +483,7 @@ function loadState() {
       petal3: parsed.profile?.petalScales?.petal3 ?? 125,
       petal4: parsed.profile?.petalScales?.petal4 ?? 125,
       petal5: parsed.profile?.petalScales?.petal5 ?? 125,
-      petal6: parsed.profile?.petalScales?.petal6 ?? 125
+      petal6: parsed.profile?.petalScales?.petal6 ?? 125,
     };
 
     if (!parsed.theme?.styleType || !themeTypes[state.theme.styleType]) {
@@ -240,13 +538,32 @@ function applyTheme() {
   preview.classList.remove(...themeClassNames);
   preview.classList.add(`theme-${state.theme.styleType}`);
 
-  document.documentElement.style.setProperty("--color-bg-main", state.theme.bgMain);
-  document.documentElement.style.setProperty("--color-bg-secondary", state.theme.bgSecondary);
-  document.documentElement.style.setProperty("--color-text-main", state.theme.textMain);
-  document.documentElement.style.setProperty("--color-text-inverse", state.theme.textInverse);
-  document.documentElement.style.setProperty("--color-link-accent", state.theme.linkAccent);
+  document.documentElement.style.setProperty(
+    "--color-bg-main",
+    state.theme.bgMain,
+  );
+  document.documentElement.style.setProperty(
+    "--color-bg-secondary",
+    state.theme.bgSecondary,
+  );
+  document.documentElement.style.setProperty(
+    "--color-text-main",
+    state.theme.textMain,
+  );
+  document.documentElement.style.setProperty(
+    "--color-text-inverse",
+    state.theme.textInverse,
+  );
+  document.documentElement.style.setProperty(
+    "--color-link-accent",
+    state.theme.linkAccent,
+  );
 
-  applyGoogleFont(state.theme.fontHeadings, "font-headings-link", "--font-headings");
+  applyGoogleFont(
+    state.theme.fontHeadings,
+    "font-headings-link",
+    "--font-headings",
+  );
   applyGoogleFont(state.theme.fontTitles, "font-titles-link", "--font-titles");
   applyGoogleFont(state.theme.fontText, "font-text-link", "--font-text");
 }
@@ -472,8 +789,13 @@ function ensureSelection(selectId, items) {
 function renderGalleryEditor() {
   const select = byId("selectGallery");
   const previousValue = select.value;
-  select.innerHTML = state.gallery.map((item) => `<option value="${item.id}">${item.title}</option>`).join("");
-  if (previousValue && state.gallery.some((item) => item.id === previousValue)) {
+  select.innerHTML = state.gallery
+    .map((item) => `<option value="${item.id}">${item.title}</option>`)
+    .join("");
+  if (
+    previousValue &&
+    state.gallery.some((item) => item.id === previousValue)
+  ) {
     select.value = previousValue;
   }
   const selectedId = ensureSelection("selectGallery", state.gallery);
@@ -491,8 +813,13 @@ function renderGalleryEditor() {
 function renderInternshipEditor() {
   const select = byId("selectInternship");
   const previousValue = select.value;
-  select.innerHTML = state.internships.map((item) => `<option value="${item.id}">${item.title}</option>`).join("");
-  if (previousValue && state.internships.some((item) => item.id === previousValue)) {
+  select.innerHTML = state.internships
+    .map((item) => `<option value="${item.id}">${item.title}</option>`)
+    .join("");
+  if (
+    previousValue &&
+    state.internships.some((item) => item.id === previousValue)
+  ) {
     select.value = previousValue;
   }
   const selectedId = ensureSelection("selectInternship", state.internships);
@@ -509,7 +836,9 @@ function renderInternshipEditor() {
 function renderSkillEditor() {
   const select = byId("selectSkill");
   const previousValue = select.value;
-  select.innerHTML = state.skills.map((skill, index) => `<option value="${index}">${skill}</option>`).join("");
+  select.innerHTML = state.skills
+    .map((skill, index) => `<option value="${index}">${skill}</option>`)
+    .join("");
   if (previousValue !== "" && Number(previousValue) < state.skills.length) {
     select.value = previousValue;
   }
@@ -589,13 +918,27 @@ function bindCoreInputs() {
     });
   };
 
-  bind("inputLogo", (value) => { state.logo = value; });
-  bind("inputHeroTitle", (value) => { state.hero.title = value; });
-  bind("inputHeroSubtitle", (value) => { state.hero.subtitle = value; });
-  bind("inputHeroButtonText", (value) => { state.hero.buttonText = value; });
-  bind("inputHeroButtonHref", (value) => { state.hero.buttonHref = value; });
-  bind("inputAboutTitle", (value) => { state.about.title = value; });
-  bind("inputAboutText", (value) => { state.about.text = value; });
+  bind("inputLogo", (value) => {
+    state.logo = value;
+  });
+  bind("inputHeroTitle", (value) => {
+    state.hero.title = value;
+  });
+  bind("inputHeroSubtitle", (value) => {
+    state.hero.subtitle = value;
+  });
+  bind("inputHeroButtonText", (value) => {
+    state.hero.buttonText = value;
+  });
+  bind("inputHeroButtonHref", (value) => {
+    state.hero.buttonHref = value;
+  });
+  bind("inputAboutTitle", (value) => {
+    state.about.title = value;
+  });
+  bind("inputAboutText", (value) => {
+    state.about.text = value;
+  });
 
   byId("resetProfileSvg").addEventListener("click", () => {
     state.profile.petalScales = {
@@ -604,7 +947,7 @@ function bindCoreInputs() {
       petal3: 125,
       petal4: 125,
       petal5: 125,
-      petal6: 125
+      petal6: 125,
     };
     renderPreview();
     setInputValues();
@@ -616,24 +959,52 @@ function bindCoreInputs() {
     byId(`${key}Scale`).addEventListener("input", (event) => {
       state.profile.petalScales[key] = Number(event.target.value);
       applyProfileSvgPetalScales();
-      byId(`${key}Value`).textContent = String(petalLevelFromScale(Number(event.target.value)));
+      byId(`${key}Value`).textContent = String(
+        petalLevelFromScale(Number(event.target.value)),
+      );
       saveState();
     });
   }
-  bind("inputGallerySectionTitle", (value) => { state.galleryTitle = value; });
-  bind("inputInternshipSectionTitle", (value) => { state.internshipTitle = value; });
-  bind("inputSkillsSectionTitle", (value) => { state.skillsTitle = value; });
-  bind("inputContactTitle", (value) => { state.contact.title = value; });
-  bind("inputContactEmail", (value) => { state.contact.email = value; });
+  bind("inputGallerySectionTitle", (value) => {
+    state.galleryTitle = value;
+  });
+  bind("inputInternshipSectionTitle", (value) => {
+    state.internshipTitle = value;
+  });
+  bind("inputSkillsSectionTitle", (value) => {
+    state.skillsTitle = value;
+  });
+  bind("inputContactTitle", (value) => {
+    state.contact.title = value;
+  });
+  bind("inputContactEmail", (value) => {
+    state.contact.email = value;
+  });
 
-  bind("colorBgMain", (value) => { state.theme.bgMain = value; });
-  bind("colorBgSecondary", (value) => { state.theme.bgSecondary = value; });
-  bind("colorTextMain", (value) => { state.theme.textMain = value; });
-  bind("colorTextInverse", (value) => { state.theme.textInverse = value; });
-  bind("colorLinkAccent", (value) => { state.theme.linkAccent = value; });
-  bind("fontHeadings", (value) => { state.theme.fontHeadings = value; });
-  bind("fontTitles", (value) => { state.theme.fontTitles = value; });
-  bind("fontText", (value) => { state.theme.fontText = value; });
+  bind("colorBgMain", (value) => {
+    state.theme.bgMain = value;
+  });
+  bind("colorBgSecondary", (value) => {
+    state.theme.bgSecondary = value;
+  });
+  bind("colorTextMain", (value) => {
+    state.theme.textMain = value;
+  });
+  bind("colorTextInverse", (value) => {
+    state.theme.textInverse = value;
+  });
+  bind("colorLinkAccent", (value) => {
+    state.theme.linkAccent = value;
+  });
+  bind("fontHeadings", (value) => {
+    state.theme.fontHeadings = value;
+  });
+  bind("fontTitles", (value) => {
+    state.theme.fontTitles = value;
+  });
+  bind("fontText", (value) => {
+    state.theme.fontText = value;
+  });
 
   byId("themeType").addEventListener("change", (event) => {
     const styleType = event.target.value;
@@ -692,10 +1063,12 @@ function setupEditors() {
     ["inputGalleryImage", "image"],
     ["inputGalleryPopupTitle", "popupTitle"],
     ["inputGalleryPopupText", "popupText"],
-    ["inputGalleryPopupImage", "popupImage"]
+    ["inputGalleryPopupImage", "popupImage"],
   ].forEach(([id, field]) => {
     byId(id).addEventListener("input", (event) => {
-      const selected = state.gallery.find((item) => item.id === byId("selectGallery").value);
+      const selected = state.gallery.find(
+        (item) => item.id === byId("selectGallery").value,
+      );
       if (!selected) return;
       selected[field] = event.target.value;
       renderPreview();
@@ -712,7 +1085,7 @@ function setupEditors() {
       image: "../assets/img/open_ocean.jpg",
       popupTitle: "New Gallery Item",
       popupText: "Popup details here.",
-      popupImage: "../assets/img/open_ocean.jpg"
+      popupImage: "../assets/img/open_ocean.jpg",
     });
     renderPreview();
     setInputValues();
@@ -735,10 +1108,12 @@ function setupEditors() {
     ["inputInternshipDescription", "description"],
     ["inputInternshipPopupTitle", "popupTitle"],
     ["inputInternshipPopupText", "popupText"],
-    ["inputInternshipPopupImage", "popupImage"]
+    ["inputInternshipPopupImage", "popupImage"],
   ].forEach(([id, field]) => {
     byId(id).addEventListener("input", (event) => {
-      const selected = state.internships.find((item) => item.id === byId("selectInternship").value);
+      const selected = state.internships.find(
+        (item) => item.id === byId("selectInternship").value,
+      );
       if (!selected) return;
       selected[field] = event.target.value;
       renderPreview();
@@ -754,7 +1129,7 @@ function setupEditors() {
       description: "New internship summary.",
       popupTitle: "New Internship",
       popupText: "Popup details for internship.",
-      popupImage: ""
+      popupImage: "",
     });
     renderPreview();
     setInputValues();
@@ -765,7 +1140,9 @@ function setupEditors() {
 
   byId("removeInternship").addEventListener("click", () => {
     const selectedId = byId("selectInternship").value;
-    state.internships = state.internships.filter((item) => item.id !== selectedId);
+    state.internships = state.internships.filter(
+      (item) => item.id !== selectedId,
+    );
     renderPreview();
     setInputValues();
     saveState();
@@ -842,14 +1219,18 @@ function setupPopupInteractions() {
 }
 
 bindImageUpload("uploadGalleryImage", (dataUrl) => {
-  const selected = state.gallery.find((item) => item.id === byId("selectGallery").value);
+  const selected = state.gallery.find(
+    (item) => item.id === byId("selectGallery").value,
+  );
   if (!selected) return;
   selected.image = dataUrl;
   selected.popupImage = dataUrl;
 });
 
 bindImageUpload("uploadInternshipPopupImage", (dataUrl) => {
-  const selected = state.internships.find((item) => item.id === byId("selectInternship").value);
+  const selected = state.internships.find(
+    (item) => item.id === byId("selectInternship").value,
+  );
   if (!selected) return;
   selected.popupImage = dataUrl;
 });

@@ -73,9 +73,15 @@ function setAuthMode(mode) {
 }
 
 function bindTopActionEvents() {
-  document.getElementById("openSignIn")?.addEventListener("click", () => openAuth("signin"));
-  document.getElementById("openSignUp")?.addEventListener("click", () => openAuth("signup"));
-  document.getElementById("heroGetStarted")?.addEventListener("click", () => openAuth("signup"));
+  document
+    .getElementById("openSignIn")
+    ?.addEventListener("click", () => openAuth("signin"));
+  document
+    .getElementById("openSignUp")
+    ?.addEventListener("click", () => openAuth("signup"));
+  document
+    .getElementById("heroGetStarted")
+    ?.addEventListener("click", () => openAuth("signup"));
   document.getElementById("signOut")?.addEventListener("click", () => {
     clearSession();
     renderAuthButtons();
@@ -85,11 +91,15 @@ function bindTopActionEvents() {
 function renderAuthButtons() {
   const session = getSession();
   if (!session) {
-    topActions.innerHTML = '<button class="utility-btn" id="openSignIn">Account</button>';
-    heroActions.innerHTML = '<button class="cta" id="heroGetStarted">Find out more about the IBPLC</button><a class="cta ghost" href="edit/index.html">Open Editor Demo</a>';
+    topActions.innerHTML =
+      '<button class="utility-btn" id="openSignIn">Account</button>';
+    heroActions.innerHTML =
+      '<button class="cta" id="heroGetStarted">Find out more about the IBPLC</button><a class="cta ghost" href="edit/index.html">Open Editor Demo</a>';
   } else {
-    topActions.innerHTML = '<a href="dashboard.html">Dashboard</a><a href="settings.html">Settings</a><a href="account.html">Account</a><button class="utility-btn" id="signOut">Sign out</button>';
-    heroActions.innerHTML = '<a class="cta" href="dashboard.html">Open My Dashboard</a><a class="cta ghost" href="edit/index.html">Open Editor Demo</a>';
+    topActions.innerHTML =
+      '<a href="dashboard.html">Dashboard</a><a href="settings.html">Settings</a><a href="account.html">Account</a><button class="utility-btn" id="signOut">Sign out</button>';
+    heroActions.innerHTML =
+      '<a class="cta" href="dashboard.html">Open My Dashboard</a><a class="cta ghost" href="edit/index.html">Open Editor Demo</a>';
   }
   bindTopActionEvents();
 }
@@ -136,11 +146,15 @@ signUpForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const name = document.getElementById("signUpName").value.trim();
-  const email = document.getElementById("signUpEmail").value.trim().toLowerCase();
+  const email = document
+    .getElementById("signUpEmail")
+    .value.trim()
+    .toLowerCase();
   const password = document.getElementById("signUpPassword").value;
 
   if (!name || !email || password.length < 6) {
-    authMessage.textContent = "Enter valid details (password at least 6 characters).";
+    authMessage.textContent =
+      "Enter valid details (password at least 6 characters).";
     return;
   }
 
@@ -163,11 +177,16 @@ signUpForm.addEventListener("submit", (event) => {
 signInForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const email = document.getElementById("signInEmail").value.trim().toLowerCase();
+  const email = document
+    .getElementById("signInEmail")
+    .value.trim()
+    .toLowerCase();
   const password = document.getElementById("signInPassword").value;
 
   const users = getUsers();
-  const user = users.find((entry) => entry.email === email && entry.password === password);
+  const user = users.find(
+    (entry) => entry.email === email && entry.password === password,
+  );
 
   if (!user) {
     authMessage.textContent = "Invalid email or password.";

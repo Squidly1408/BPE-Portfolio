@@ -58,7 +58,10 @@ if (session) {
     event.preventDefault();
 
     const newName = document.getElementById("accountName").value.trim();
-    const newEmail = document.getElementById("accountEmail").value.trim().toLowerCase();
+    const newEmail = document
+      .getElementById("accountEmail")
+      .value.trim()
+      .toLowerCase();
     const newPassword = document.getElementById("accountPassword").value;
 
     if (!newName || !newEmail) {
@@ -67,9 +70,12 @@ if (session) {
     }
 
     const allUsers = getUsers();
-    const existing = allUsers.find((entry) => entry.email === newEmail && entry.email !== session.email);
+    const existing = allUsers.find(
+      (entry) => entry.email === newEmail && entry.email !== session.email,
+    );
     if (existing) {
-      accountMessage.textContent = "That email is already in use by another account.";
+      accountMessage.textContent =
+        "That email is already in use by another account.";
       return;
     }
 
@@ -79,7 +85,7 @@ if (session) {
         ...entry,
         name: newName,
         email: newEmail,
-        password: newPassword ? newPassword : entry.password
+        password: newPassword ? newPassword : entry.password,
       };
     });
 
@@ -94,12 +100,11 @@ if (session) {
           return {
             ...portfolio,
             ownerEmail: newEmail,
-            ownerName: newName
+            ownerName: newName,
           };
         });
         localStorage.setItem(PORTFOLIOS_KEY, JSON.stringify(updatedPortfolios));
-      } catch {
-      }
+      } catch {}
     }
 
     const allSettingsRaw = localStorage.getItem(SETTINGS_KEY);
@@ -111,18 +116,22 @@ if (session) {
           delete settings[session.email];
           localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
         }
-      } catch {
-      }
+      } catch {}
     }
 
-    localStorage.setItem(SESSION_KEY, JSON.stringify({ name: newName, email: newEmail }));
+    localStorage.setItem(
+      SESSION_KEY,
+      JSON.stringify({ name: newName, email: newEmail }),
+    );
     welcomeText.textContent = `Signed in: ${newName}`;
     accountMessage.textContent = "Account updated.";
     document.getElementById("accountPassword").value = "";
   });
 
   deleteAccountButton.addEventListener("click", () => {
-    const confirmDelete = window.confirm("Delete account and all associated portfolios? This cannot be undone.");
+    const confirmDelete = window.confirm(
+      "Delete account and all associated portfolios? This cannot be undone.",
+    );
     if (!confirmDelete) return;
 
     const users = getUsers().filter((entry) => entry.email !== session.email);
@@ -132,10 +141,11 @@ if (session) {
     if (portfoliosRaw) {
       try {
         const portfolios = JSON.parse(portfoliosRaw);
-        const updated = portfolios.filter((portfolio) => portfolio.ownerEmail !== session.email);
+        const updated = portfolios.filter(
+          (portfolio) => portfolio.ownerEmail !== session.email,
+        );
         localStorage.setItem(PORTFOLIOS_KEY, JSON.stringify(updated));
-      } catch {
-      }
+      } catch {}
     }
 
     const allSettingsRaw = localStorage.getItem(SETTINGS_KEY);
@@ -144,8 +154,7 @@ if (session) {
         const settings = JSON.parse(allSettingsRaw) || {};
         delete settings[session.email];
         localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
-      } catch {
-      }
+      } catch {}
     }
 
     localStorage.removeItem(SESSION_KEY);

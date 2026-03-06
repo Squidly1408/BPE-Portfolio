@@ -53,10 +53,13 @@ function renderPortfolioList() {
   if (!session) return;
 
   const allPortfolios = getPortfolios();
-  const mine = allPortfolios.filter((portfolio) => portfolio.ownerEmail === session.email);
+  const mine = allPortfolios.filter(
+    (portfolio) => portfolio.ownerEmail === session.email,
+  );
 
   if (!mine.length) {
-    portfolioList.innerHTML = '<div class="empty">No portfolios yet. Create your first official portfolio from the form.</div>';
+    portfolioList.innerHTML =
+      '<div class="empty">No portfolios yet. Create your first official portfolio from the form.</div>';
     return;
   }
 
@@ -142,7 +145,7 @@ createPortfolioForm.addEventListener("submit", (event) => {
     name,
     theme,
     cohort,
-    createdAt: new Date().toISOString()
+    createdAt: new Date().toISOString(),
   };
 
   const all = getPortfolios();
